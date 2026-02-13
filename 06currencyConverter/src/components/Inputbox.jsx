@@ -1,4 +1,4 @@
-import React, {useId} from "react";
+import React, { useId } from "react";
 
 
 function InputBox({
@@ -11,10 +11,10 @@ function InputBox({
     amountDisabled = false,
     currencyDisabled = false,
 
-    
+
     className = "",
 }) {
-   const amountInputId = useId() 
+    const amountInputId = useId()
 
 
     return (
@@ -24,13 +24,13 @@ function InputBox({
                     {label}
                 </label>
                 <input
-                    id = {amountInputId}
+                    id={amountInputId}
                     className="outline-none w-full bg-transparent py-1.5"
                     type="number"
                     placeholder="Amount"
-                    disabled = {amountDisabled}
+                    disabled={amountDisabled}
                     value={amount}
-                    onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))} 
+                    onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value))}
                 />
             </div>
             <div className="w-1/2 flex flex-wrap justify-end text-right">
@@ -38,17 +38,17 @@ function InputBox({
                 <select
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     value={selectCurrency}
-                    onCurrencyChange = {(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
+                    onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)} // Fixed: Use standard 'onChange' event for select element
                     disabled={currencyDisabled}
                 >
-                    
-                        {currencyOptions.map((currency) => (
-                            <option key={currency} value={currency}>
+
+                    {currencyOptions.map((currency) => (
+                        <option key={currency} value={currency}>
                             {currency}
                         </option>
 
-                        ))}
-                
+                    ))}
+
                 </select>
             </div>
         </div>
